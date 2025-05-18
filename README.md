@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Agentic AI Data Analyst
 
 A Python-based agentic analytics framework that autonomously ingests, explores, and reports on tabular datasets using LangGraph, LangChain, and LLMs.
@@ -79,4 +81,4 @@ A Python-based agentic analytics framework that autonomously ingests, explores, 
 
 ## 📜 License
 
-This project is released under the [MIT License](LICENSE). Feel free to use and modify!
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
