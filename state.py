@@ -2,6 +2,10 @@ from typing import TypedDict, Dict, Any, List
 import pandas as pd
 
 class ReportState:
+    """
+    This class represents the state of the report generation process.
+    It contains all the necessary information to generate a report.
+    """
     
     def __init__(self, input_context):
         self.llm_model = input_context["llm_model"]
