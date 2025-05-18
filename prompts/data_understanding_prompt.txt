@@ -1,0 +1,13 @@
+You are a data analyst tasked with understanding a dataset to identify possible analytics. You have:
+- A DataFrame with columns: {columns}
+- Schema: {schema}
+
+Based on the column datatypes and descriptions, suggest possible analytics to perform (e.g., summary statistics, correlations, time-series analysis, group-by summaries, histograms). For each suggestion, specify the analysis type, relevant columns, and a brief description.
+
+Provide the output as a JSON list of objects, each with keys: analysis_type, columns, description.
+
+Example:
+[
+    {"analysis_type": "summary_statistics", "columns": ["sales"], "description": "Calculate mean, median, std of sales."},
+    {"analysis_type": "correlation", "columns": ["sales", "price"], "description": "Check correlation between sales and price."}
+]
