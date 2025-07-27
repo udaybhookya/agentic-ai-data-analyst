@@ -62,22 +62,41 @@ The core of the project is a graph-based workflow that defines how the agents co
 
 ## 📂 Project Structure
 
+Of course. Here is the updated project structure based on your screenshot.
+
 ```
 .
 ├── agents/
+│   ├── __pycache__/
+│   ├── code_execution_agent.py   # Executes and self-corrects code
+│   ├── content_planning_agent.py # Creates plots and narrative summaries
+│   ├── plan_analytics.py         # Generates Python code for analyses
+│   ├── report_generation.py      # Compiles the final PDF report
+│   └── understand_data.py        # Profiles data and suggests analyses
 ├── data/
-├── output/                     # Generated PDF reports
-├── plots/                      # Saved plots and charts from analysis
-├── prompts/                    # Static prompt templates for the LLM
+│   ├── df/                       # Raw CSV datasets
+│   └── schema/                   # Schema descriptions for the data
+├── myenv/                        # Python virtual environment
+├── output/                       # Generated Reports
+├── plots/                        # Saved plots and charts from analysis
+├── prompts/
+│   ├── code_correction_prompt_template.txt
+│   ├── code_generation_prompt_template.txt
+│   ├── data_understanding_prompt.txt
+│   ├── interpretation_prompt.txt
+│   └── plotting_prompt_template.txt
 ├── utils/
-├── .env                        # API keys and secrets (gitignored)
+│   ├── __pycache__/
+│   ├── load_data.py              # Loads data and schemas
+│   ├── load_llm.py               # Initializes the LLM
+│   └── preprocess_data.py        # Prepares data for analysis
+├── .env                          # API keys and secrets (gitignored)
 ├── .gitignore
-├── graph.png                   # A visualization of the agent workflow
-├── main.py                     # Entry-point script to run the agent
+├── main.py                       # Entry-point script to run the agent
 ├── README.md
 ├── requirements.txt
-├── state.py                    # Defines the shared state object for the workflow
-└── workflow.py                 # Builds and compiles the LangGraph workflow
+├── state.py                      # Defines the shared state object for the workflow
+└── workflow.py                   # Builds and compiles the LangGraph workflow
 ```
 
 ## 🤝 Contributing
