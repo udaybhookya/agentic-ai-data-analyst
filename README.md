@@ -26,7 +26,7 @@ The core of the project is a graph-based workflow that defines how the agents co
 1.  **Clone the repo**
 
     ```bash
-    git clone https://github.com/USERNAME/agentic-ai-data-analyst.git
+    git clone https://github.com/udaybhookya/agentic-ai-data-analyst.git
     cd agentic-ai-data-analyst
     ```
 
@@ -65,23 +65,11 @@ The core of the project is a graph-based workflow that defines how the agents co
 ```
 .
 ├── agents/
-│   ├── __init__.py
-│   ├── understand_data.py      # Profiles data and suggests analyses
-│   ├── plan_analytics.py       # Generates Python code for analyses
-│   ├── code_execution.py       # Executes and self-corrects code
-│   ├── content_planning.py     # Creates plots and narrative summaries
-│   └── report_generation.py    # Compiles the final PDF report
 ├── data/
-│   ├── df/                     # Raw CSV datasets
-│   └── schema/                 # Schema descriptions for the data
 ├── output/                     # Generated PDF reports
 ├── plots/                      # Saved plots and charts from analysis
 ├── prompts/                    # Static prompt templates for the LLM
 ├── utils/
-│   ├── __init__.py
-│   ├── load_data.py            # Loads data and schemas
-│   ├── load_llm.py             # Initializes the LLM
-│   └── preprocess_data.py      # Prepares data for analysis
 ├── .env                        # API keys and secrets (gitignored)
 ├── .gitignore
 ├── graph.png                   # A visualization of the agent workflow
