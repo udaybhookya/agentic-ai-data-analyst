@@ -77,7 +77,6 @@ The core of the project is a graph-based workflow that defines how the agents co
 ├── output/                     # Generated PDF reports
 ├── plots/                      # Saved plots and charts from analysis
 ├── prompts/                    # Static prompt templates for the LLM
-│   └── data_understanding_prompt.txt
 ├── utils/
 │   ├── __init__.py
 │   ├── load_data.py            # Loads data and schemas
