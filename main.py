@@ -45,11 +45,12 @@ def agentic_ai_data_analyst_main(input_files, schema_files, data_path, schema_pa
         print(f"Error loading LLM: {e}")
         return None
     
+    
     # Run Agentic workflow
     input_context = {
         "llm_model": llm,
         "processed_tables": processed_tables,
-        "pdf_path": "output/",
+        "pdf_path": "output/"
     }
     
     # State
@@ -58,7 +59,7 @@ def agentic_ai_data_analyst_main(input_files, schema_files, data_path, schema_pa
     
     try:
         # Build the workflow
-        graph = build_workflow()
+        graph = build_workflow(state)
     except Exception as e:
         print(f"Error building workflow: {e}")  
         return None
@@ -68,6 +69,7 @@ def agentic_ai_data_analyst_main(input_files, schema_files, data_path, schema_pa
         final_state = graph.invoke(state)
     except Exception as e:
         print(f"Error running workflow: {e}")
+        
         return None
     
 

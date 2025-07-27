@@ -16,6 +16,8 @@ class ReportState:
         self.visualizations = []
         self.report_content = ""
         self.pdf_path = ""
+        self.analytics_code = []
+        self.report_content = []
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert the ReportState to a dictionary."""
