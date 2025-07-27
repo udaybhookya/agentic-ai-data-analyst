@@ -2,82 +2,104 @@
 
 # Agentic AI Data Analyst
 
-A Python-based agentic analytics framework that autonomously ingests, explores, and reports on tabular datasets using LangGraph, LangChain, and LLMs.
+A Python-based agentic analytics framework that autonomously ingests, explores, analyzes, and reports on tabular datasets using LangGraph, LangChain, and modern LLMs.
 
 ## 📝 Overview
 
-* **Data Understanding:** Automated profiling and summary of input tables based on schemas.
-* **Agent Planning:** Dynamically generate analysis plans (aggregations, charts, narratives).
-* **Execution & Error Handling:** Run pandas queries, loop on failures (up to 3 retries) with LLM-assisted fixes.
-* **Report Generation:** Compile results and narratives into PDF/HTML reports.
+This project implements a multi-agent system that acts as an autonomous data analyst. The workflow is orchestrated using LangGraph, where each step is a specialized agent responsible for a specific part of the analysis pipeline.
+
+  * **Data Understanding:** Automated profiling and summary of input tables based on provided schemas.
+  * **Analytics Planning:** Dynamically generates a high-level plan of insightful analyses to perform on the data.
+  * **Code Generation:** Writes Python (Pandas) code to execute each step of the analysis plan.
+  * **Self-Correcting Execution:** Executes the generated code, catches errors, and uses an LLM to correct the code, retrying up to three times.
+  * **Content & Visualization Planning:** Interprets the raw results (DataFrames, numbers) and generates insightful narratives. If the result is a DataFrame, it generates and saves a relevant plot.
+  * **PDF Report Generation:** Compiles the generated narratives and plots into a polished, professional PDF report.
+
+## 🤖 Agentic Workflow
+
+The core of the project is a graph-based workflow that defines how the agents collaborate:
+
+`START` -\> `data_understanding` -\> `analytics_planning` -\> `code_execution` -\> `content_planning` -\> `report_generation` -\> `END`
 
 ## 🚀 Quick Start
 
-1. **Clone the repo**
+1.  **Clone the repo**
 
-   ```bash
-   git clone https://github.com/USERNAME/agentic-ai-data-analyst.git
-   cd agentic-ai-data-analyst
-   ```
-2. **Create & activate a virtual environment**
+    ```bash
+    git clone https://github.com/USERNAME/agentic-ai-data-analyst.git
+    cd agentic-ai-data-analyst
+    ```
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-3. **Install dependencies**
+2.  **Create & activate a virtual environment**
 
-   ```bash
-   pip install --upgrade pip
-   pip install -r requirements.txt
-   ```
-4. **Configure environment variables**
-   Copy `.env.example` to `.env` and fill in your keys:
+    ```bash
+    python3 -m venv myenv
+    source myenv/bin/activate
+    ```
 
-   ```bash
-   cp .env.example .env
-   # then edit .env to add OPENAI_API_KEY etc.
-   ```
-5. **Run the project**
+3.  **Install dependencies**
 
-   ```bash
-   python main.py --config langgraph.json
-   ```
+    ```bash
+    pip install --upgrade pip
+    pip install -r requirements.txt
+    ```
+
+4.  **Configure environment variables**
+
+    Create a `.env` file in the root directory and add your API key:
+
+    ```bash
+    GOOGLE_API_KEY="YOUR_API_KEY_HERE"
+    ```
+
+5.  **Run the project**
+
+    ```bash
+    python main.py
+    ```
+
+    The final PDF report will be saved in the `output/` directory.
 
 ## 📂 Project Structure
 
 ```
 .
 ├── agents/
-│   ├── plan_analytics.py      # Build and sequence analysis steps
-│   └── understand_data.py     # Data profiling agent
-├── utils/
-│   ├── load_data.py           # Schema-driven CSV loader
-│   ├── preprocess_data.py     # Cleaning & type conversion
-│   └── load_llm.py            # LLM initialization
+│   ├── __init__.py
+│   ├── understand_data.py      # Profiles data and suggests analyses
+│   ├── plan_analytics.py       # Generates Python code for analyses
+│   ├── code_execution.py       # Executes and self-corrects code
+│   ├── content_planning.py     # Creates plots and narrative summaries
+│   └── report_generation.py    # Compiles the final PDF report
 ├── data/
-│   ├── df/                    # Raw CSV datasets
-│   └── schema/                # Corresponding schema files
-├── prompts/                   # Static prompt templates
+│   ├── df/                     # Raw CSV datasets
+│   └── schema/                 # Schema descriptions for the data
+├── output/                     # Generated PDF reports
+├── plots/                      # Saved plots and charts from analysis
+├── prompts/                    # Static prompt templates for the LLM
 │   └── data_understanding_prompt.txt
-├── output/                    # Intermediate outputs (logs, graphs)
-├── reports/                   # Final report artifacts
-├── langgraph.json             # Workflow definition for LangGraph
-├── workflow.py                # Orchestrator engine
-├── state.py                   # Workflow state management
-├── main.py                    # Entry-point script
+├── utils/
+│   ├── __init__.py
+│   ├── load_data.py            # Loads data and schemas
+│   ├── load_llm.py             # Initializes the LLM
+│   └── preprocess_data.py      # Prepares data for analysis
+├── .env                        # API keys and secrets (gitignored)
+├── .gitignore
+├── graph.png                   # A visualization of the agent workflow
+├── main.py                     # Entry-point script to run the agent
+├── README.md
 ├── requirements.txt
-├── .env                       # API keys & secrets (gitignored)
-└── .gitignore
+├── state.py                    # Defines the shared state object for the workflow
+└── workflow.py                 # Builds and compiles the LangGraph workflow
 ```
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/my-feature`
-3. Commit your changes: `git commit -m "Add my feature"`
-4. Push to your branch: `git push origin feature/my-feature`
-5. Open a Pull Request and describe your changes
+1.  Fork the repository
+2.  Create a feature branch: `git checkout -b feature/my-new-feature`
+3.  Commit your changes: `git commit -m "Add my new feature"`
+4.  Push to your branch: `git push origin feature/my-new-feature`
+5.  Open a Pull Request and describe your changes.
 
 ## 📜 License
 
